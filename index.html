@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Intro a JS</title>
+   <!---<link rel="stylesheet" href="style.css" />-->
+    <meta name="description" content="Ejemplo">
+    <!-- Import the component -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script>
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+<!-- Use it like any other HTML element -->
+
+  </head>
+  <style>
+    #hotspot-demo, .div_video, .epocas{
+      width: 800px;
+      height: 700px;
+    }
+    .div_video{
+      display: none;
+    }
+    .epocas{
+      display: none;
+      background-image: url('computadora.png');
+      background-repeat: no-repeat;
+      background-size: 100%;
+    }
+    .btn {
+  width: 120px;
+  height: 40px;
+  background: linear-gradient(to top, #00154c, #12376e, #23487f);
+  color: #fff;
+  border-radius: 50px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+#off{
+  background:red;
+}
+
+.btn span {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: top 0.5s;
+}
+
+.btn-text-one {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.btn-text-two {
+  position: absolute;
+  width: 100%;
+  top: 150%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.btn:hover .btn-text-one {
+  top: -100%;
+}
+
+.btn:hover .btn-text-two {
+  top: 50%;
+}
+
+.card {
+  width: 800px;
+  height: 700px;
+  border-radius: 20px;
+  padding: 5px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+  margin: 0 auto;
+}
+
+.card__content {
+  background: white;
+  border-radius: 17px;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+}
+
+#fade{
+  animation: fadeIn 3s ease;
+}
+
+@keyframes fadeIn {
+  0% {opacity: 0;}
+}
+
+.waviy {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100px;
+  align-items: center;
+  justify-content: center;
+  background-color: #00154c;
+}
+.waviy span {
+  position: relative;
+  display: inline-block;
+  font-size: 40px;
+  color: #fff;
+  text-transform: uppercase;
+  animation: flip 2s infinite;
+  animation-delay: calc(.2s * var(--i))
+}
+@keyframes flip {
+  0%,80% {
+    transform: rotateY(360deg) 
+  }
+}
+.container_flex{
+display:flex;
+align-items: center;
+justify-content: center;
+margin-left: 130px;
+width: 100%;
+}
+.elemento{
+width:25%;
+height:10%;
+/*background-color: red;*/
+}
+.container_flex{
+flex-wrap:wrap;
+}
+  </style>
+  <body>
+ <div class="waviy">
+  
+   <span style="--i:1"><i class="fa fa-clock-o" aria-hidden="true"></i> M</span>
+   <span style="--i:2">A</span>
+   <span style="--i:3">Q</span>
+   <span style="--i:4">U</span>
+   <span style="--i:5">I</span>
+   <span style="--i:6">N</span>
+   <span style="--i:7">A</span>
+   <span style="--i:8">&nbsp;</span>
+   <span style="--i:9">D</span>
+   <span style="--i:10">E</span>
+   <span style="--i:11">L</span>
+   <span style="--i:12">&nbsp;</span>
+   <span style="--i:13">T</span>
+   <span style="--i:14">I</span>
+   <span style="--i:15">E</span>
+   <span style="--i:16">M</span>
+   <span style="--i:16">P</span>
+   <span style="--i:16">O</span>
+  </div>
+    <br>
+     <div class="card">
+<div class="card__content">
+  <model-viewer id="hotspot-demo" src="off.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls poster="b.png" shadow-intensity="1.27" shadow-softness="0.87" exposure="1.22"><!--style="display: none;" -->
+    <button class="btn" slot="hotspot-5" data-surface="5 86 3 4 5 0.263 0.552 0.185" data-visibility-attribute="visible" onclick="playVid();">
+        <span class="btn-text-one"><i class="fa fa-desktop" aria-hidden="true"></i> Encender</span>
+        <span class="btn-text-two">Da clic</span>
+    </button>
+   
+    <button type="button" class="btn" slot="hotspot-6" data-surface="5 36 0 1 2 0.459 0.486 0.055" data-visibility-attribute="visible" onclick="playVid();">  
+        <span class="btn-text-one"><i class="fa fa-desktop" aria-hidden="true"></i> Encender</span>
+        <span class="btn-text-two">Da clic</span>
+    </button>
+  
+</model-viewer>
+<div class="div_video" id="video">
+  <video width="800" height="800" id="myVideo">
+    <source src="Electricity.mp4" type="video/mp4" />
+    <img src="default.png" alt="Video no soportado" />
+    Su navegador no soporta este formato de video.
+  </video> 
+</div>
+<div class="epocas" id="epocas_div">
+
+
+  <div  class="container_flex">
+    <div class="elemento"> <button class="btn" slot="hotspot-5" data-surface="5 86 3 4 5 0.263 0.552 0.185" data-visibility-attribute="visible" onclick="window.open('https://pixabay.com/get/g41e5009d9ae241447aa167cb115321cafaf678bc7fd241e465d704f75aaa634a58e339e66f6ff59ac8d0b2bbcc6012932516b94813c0179876a6e62568ae67a0d0e383e6f86b8c560ba5c01aafdd499a_1280.jpg', '_blank');">
+      <span class="btn-text-one"><i class="fa fa-suitcase" aria-hidden="true"></i> Prehistoria</span>
+      <span class="btn-text-two">viajar !</span>
+  </button></div>
+    <div class="elemento"> <button class="btn" slot="hotspot-5" data-surface="5 86 3 4 5 0.263 0.552 0.185" data-visibility-attribute="visible" onclick="window.open('https://pixabay.com/get/g00eb805b7833750107d4eea3d6f91b4fb5918f2f50bb8024c1ce7dc4e1108a163ce6fbf8ca2435d08f2a53aaf6b1e37d58dc0805296935c52a4f48c078f35041e2fcd2e4598c41836b25f0bb84369db3_1280.jpg', '_blank');">
+      <span class="btn-text-one"><i class="fa fa-suitcase" aria-hidden="true"></i> Edad Media</span>
+      <span class="btn-text-two">viajar !</span>
+  </button></div>
+    <div class="elemento"> <button class="btn" slot="hotspot-5" data-surface="5 86 3 4 5 0.263 0.552 0.185" data-visibility-attribute="visible" onclick="window.open('https://pixabay.com/get/g8405205cc5b0eddb4dbc5525427ad1d12ceb14fd1e568d39d3a3b95bc862ad5452b611d78b92346b5a376caaf3819b4da758ea99594fe8778271a21bf756ea5683a50dcd1e2fbbe553936f9b251e2470_1280.jpg', '_blank');">
+      <span class="btn-text-one"><i class="fa fa-suitcase" aria-hidden="true"></i> Futuro Cyberpunk</span>
+      <span class="btn-text-two">viajar !</span>
+  </button></div>
+<br>
+
+  </div>
+  <br>
+  <button class="btn" id="off" slot="hotspot-5" data-surface="5 86 3 4 5 0.263 0.552 0.185" data-visibility-attribute="visible" onclick="window.location.reload()">
+    <span class="btn-text-one"><i class="fa fa-power-off" aria-hidden="true"></i> Apagar</span>
+    <span class="btn-text-two">Off !</span>
+  </button>
+  </div>
+</div>
+
+
+
+
+   <!-- <img src="b.png" alt="prueba" width="500" id="fade"> -->
+    
+  </body>
+  <script>
+ 
+
+  var x = document.getElementById("myVideo");
+ // playVid();
+ console.log("asd");
+  function playVid()
+    {
+      document.getElementById('hotspot-demo').style.display = 'none';
+      document.getElementById('video').style.display = 'block';
+    x.play();
+
+  document.getElementById('myVideo').addEventListener('ended',myHandler,false);
+    function myHandler(e) {
+     //alert('El video ha finalizado!!!');
+//     pauseVid();
+    // alert("1");
+     pauseVid();
+      // What you want to do after the event
+    }
+    }
+
+  function pauseVid()
+    {
+     // alert("2");
+    document.getElementById('video').style.display = 'none';
+     document.getElementById('epocas_div').style.display = 'flex';
+    // x.pause();
+    }
+
+  function pc() {
+      window.open('pc.html');
+  }
+  </script>
+</html>
